@@ -11,6 +11,8 @@ import { MatCardModule } from '@angular/material/card';
 import { PokemonDetailComponent } from './pokemon-detail/pokemon-detail.component';
 import { TypePipe } from './pypes/type.pipe';
 import { ChartsModule } from 'ng2-charts';
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -25,7 +27,6 @@ import { ChartsModule } from 'ng2-charts';
     MatToolbarModule,
     MatCardModule,
     ChartsModule
-
   ],
   providers: [],
   bootstrap: [AppComponent]
