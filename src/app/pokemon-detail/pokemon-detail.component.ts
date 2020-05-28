@@ -4,12 +4,6 @@ import { POKEMONS } from '../modles/pokemons';
 import { RadialChartOptions, ChartDataSets, ChartType } from 'chart.js';
 import { Label } from 'ng2-charts';
 
-type NewType_2 = ChartDataSets;
-
-type NewType_1 = NewType_2;
-
-type NewType = NewType_1;
-
 @Component({
   selector: 'app-pokemon-detail',
   templateUrl: './pokemon-detail.component.html',
@@ -20,12 +14,21 @@ export class PokemonDetailComponent implements OnInit {
   pokemons = POKEMONS;
   pokemon;
 
-  public radarChartOptions: RadialChartOptions = {
+  private _radarChartOptions: RadialChartOptions = {
     responsive: true,
+    legend: {
+      display: false
+    }
   };
+  public get radarChartOptions(): RadialChartOptions {
+    return this._radarChartOptions;
+  }
+  public set radarChartOptions(value: RadialChartOptions) {
+    this._radarChartOptions = value;
+  }
   public radarChartLabels: Label[] = ['体力', '攻撃力', '防御力', 'スピード'];
 
-  public radarChartData: NewType[] = [];
+  public radarChartData: ChartDataSets[] = [];
   public radarChartType: ChartType = 'radar';
 
   constructor(
@@ -43,7 +46,8 @@ export class PokemonDetailComponent implements OnInit {
           this.pokemon.base.Defense,
           this.pokemon.base.Speed,
         ]
-      })
+      });
     });
   }
+
 }
